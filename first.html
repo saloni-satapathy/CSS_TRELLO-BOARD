@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello Board</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+        html{
+            background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2014/02/11/251601/b751a925b602cbb26a9305b5d6b95615-700.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            font:inherit;
+            width:100vp;
+            
+            
+        }
+        .upper-bar{
+            display:flex;
+            background-color: rgba(83,173,203,0.6);
+            background-size: cover;
+            top:0;
+            left:0;
+            right:0;
+            position: fixed;
+            width:100%;
+            color:white;
+            padding:8px 20px;
+            vertical-align: baseline;
+            font: inherit;
+        } 
+       
+       *{
+           box-sizing: border-box;
+        }     
+        .home, .Board, .plus, .user {
+            display: inline-block;
+            background-color:rgba(83,173,203,1);
+          /*  flex-grow: 1;*/
+            margin:0 5px;
+            padding: 8px;
+            align-self: flex-start;
+            border-radius: 2px;
+            font-family: Helvetica, sans-serif;
+            font-size: small; 
+            position:relative;}
+        .text-area{
+            background-color: transparent;
+            display: inline-block;
+            background-color:rgba(83,173,203,1);
+          /*  flex-grow: 1;*/
+            margin:0 5px;
+            padding: 5px;
+            align-self: flex-start;
+            border-radius: 2px;
+            font:arial; 
+        }
+       .text-area:focus-within {
+          background-color: white ;
+          }
+        #t:focus-within {
+          background-color: white ;
+          }
+        .upper-bar .text-area input{
+            width: 120px;
+            padding: 4px 2px;
+            border: none;
+            border-radius: 2px;
+            line-height: 1.2;
+            color: black;
+            outline: none;
+            background-color:rgba(83,173,203,1) ;
+            border-color: rgba(83,173,203,1);
+            }
+        .Tralala{
+            position: center; 
+            text-align: center; 
+            font-family:cursive;
+            font-size:large;
+            margin-left:385px;
+            margin-right:520px; 
+            justify-content: space-around;
+            vertical-align: baseline;
+                 
+        }
+      
+        .upper-bar i:hover{
+          opacity: 0.7;
+          cursor:pointer;
+        } 
+        .Board:hover{
+            opacity:0.7;
+        } 
+       .frotend-training{
+            display:flex;
+            float:inline-end;
+            background-color:rgba(83,173,203,0.2); 
+            font-family: Helvetica, sans-serif;
+            background-size: cover;
+            position: fixed;
+            width:100%;
+            color:white;
+            
+            /*padding:8px 10px;*/
+            font-size:13px;
+            margin-top:4px;
+          }
+        .e1, .e2{
+            padding: 12px 0px;
+            align-self: flex-start;
+            margin-left: 20px;
+        }
+        .e1{
+            margin-right:81%;
+        }
+        .e2:hover{
+            opacity: 0.7;
+        }
+        .block{
+           display:flex; 
+           flex-wrap: nowrap;
+           height: 100vp;
+           font-family: Helvetica; 
+           flex-shrink: 0;
+           margin-top: 0px;
+           color: #2F4F4F;
+           margin-bottom: 10%;
+           
+        }
+        .div1,.div2,.div3,.div4,.div5,.d1,.d2{
+            background-color:#DCDCDC;
+            flex-grow: 1;
+            margin: 10px;
+            padding: 10px;
+            align-self: flex-start;
+            border-radius: 5px;
+            min-width: 18%;
+            
+            
+        }
+        .divt{
+            text-align:left;
+            font-weight: bold;
+            
+        }
+        .div12,.div13,.div14,.div22,.div32,.d12{
+            background-color: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding:5px;
+            border-radius: 3px;
+            font-size:15px;
+        }
+        .plus_div{
+            margin-top: 10px;
+           font-size: 15px;
+        }
+        button{
+            font-size: 15px;
+            background-color:olive;
+            border:none;
+            color:white;
+            font:400 13.3333px Arial;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 8px;
+            margin-right:10px;
+            
+            font-size: 1.3em;
+        }
+        textarea{
+            outline:none;
+            border:none;
+            border-radius: 3px;
+            padding: 8px 5px;
+            font-size:large;
+            width:100%;
+            resize: none;
+        }
+        .pencil{
+           display: none;
+           float:right;
+       }
+       .A{
+          padding-right:40%;
+           cursor: pointer;
+       }
+      
+        #txt:focus-within{
+          background-color: white;
+        }
+        
+        
+       .plus_div:hover{
+            opacity:0.7;
+        }
+        #dot:hover{
+            opacity:0.7;
+        }
+        button:hover{
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        .A:hover{
+            opacity:0.7;
+        }
+        .A:hover + .pencil{
+           display:inline;
+           opacity: 0.7;
+                
+      }
+        #cross:hover{
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <div class="upper-bar">
+        
+        <div class="home">
+        <i class="fas fa-home" width="25px" height="20px"></i>
+         </div>
+        <div class="Board">
+            <i class="fas fa-th-list" width="25px" height="20px"></i>
+           Boards
+        </div>
+        <div class="text-area" id="txt">
+            <input type="text" id="t">
+        </div>
+        <div class="Tralala" >
+            Tralala
+        </div>
+        <div class="plus"> 
+            <i class="fas fa-plus" width="25px" height="20px"></i>
+        </div>
+        <div class="user">
+            <i class="fas fa-user" width="25px" height="20px"></i>
+        </div>
+     
+    </div>
+    <br><br>
+    <div class="frotend-training">
+        <div class="e1">
+            Frontend Training
+        </div>
+        <div class="e2">
+            <i class="fas fa-ellipsis-v" width="25px" height="20px"></i> 
+            Show Menu
+        </div>
+        
+    </div>
+    <br><br><br>
+    <div class="block">
+        <div class="div1">
+            <div class="div11">
+                 <span class="divt" style="font-weight: bold;">To Do </span>
+                 <i class="fas fa-ellipsis-h" id="dot" style= "float:right;"></i>
+            </div>
+            <div class="div12">
+                <span class="A">Learn HTML</span>
+                <div class="pencil"><i class="fas fa-pencil-alt" ></i></div>
+             </div>
+            <div class="div13">
+                <span class="A">Learn CSS</span>
+                <div class="pencil"><i class="fas fa-pencil-alt" ></i></div>
+            </div>
+            <div class="div14">
+                 <span class="A">Learn JavaScript</span>
+                <div class="pencil"><i class="fas fa-pencil-alt" ></i></div>
+           </div>
+           <div class="plus_div">
+               + Add another card
+            </div>
+        </div>
+        <div class="d1">
+            <div class="d11">
+                <span class="divt" style="font-weight: bold;">Doing </span>
+                <i class="fas fa-ellipsis-h"  width="10px" height="10px" id="dot" style= "float:right;" ></i>
+           </div>
+           <div class="d12">
+               Prepare Resume
+            </div>
+            <form>
+            <div class="d13">
+                 <textarea id="txt" placeholder="Enter a title for this card. . ." rows=3></textarea>
+                 
+            </div>
+            <div class="add">
+                <span><button>Add Card</button></span>
+                <i class="fas fa-times" id="cross" width="25px" height="20px"></i>
+            </div>
+            </form>
+        </div>
+        <div class="div2">
+            <div class="div21">
+                <span class="divt" style="font-weight: bold;">Testing/Verifying </span>
+                <i class="fas fa-ellipsis-h"  width="25px" height="20px" id="dot" style= "float:right;"></i>
+           </div>
+           <div class="div12">
+               Twitter app frontend
+            </div>
+           
+          <div class="plus_div">
+              + Add another card
+           </div>
+        </div>
+        <div class="div3">
+            <div class="div31">
+                <span class="divt" style="font-weight: bold;">Depolying </span>
+                <i class="fas fa-ellipsis-h" id="dot" style= "float:right;"></i>
+           </div>
+           <div class="div32">
+               Twitter app backend
+            </div>
+           
+          <div class="plus_div">
+              + Add another card
+           </div>
+        </div>
+        <div class="div4">
+            <div class="div41">
+                <span class="divt" style="font-weight: bold;">Done </span>
+                <i class="fas fa-ellipsis-h" id="dot" style= "float:right;"></i>
+           </div>
+           <div class="plus_div" style="min-width: 50px;">
+              + Add card
+           </div>
+        </div>
+        <div class="div5">
+            <div class="plus_div" style="margin-top: 5px;">
+                + Add another list
+            </div>
+        </div>
+        <div class="d2">
+           
+           <form>
+            <div class="d13">
+                <textarea id="txt" placeholder="Enter list title. . ." rows=3 ></textarea>
+            </div>
+            <div class="add">
+                <span><button>Add List</button></span>
+                <i class="fas fa-times" id="cross" width="100%" height="100%"></i>
+            </div>
+            </form>
+        </div>
+
+
+        
+    </div>
+    
+</body>
+</html>
